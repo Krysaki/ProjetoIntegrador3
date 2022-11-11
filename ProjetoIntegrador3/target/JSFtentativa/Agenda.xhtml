@@ -8,19 +8,43 @@
     <h:head>
         <title>Agendamento de servico</title>
     </h:head>
+    
+    <style>
+            h1{
+    padding-top: 20px;
+    text-align: center;
+    }
+    #tabelaInteira {
+    width:500px;
+    height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin: 10px 5px;
+    padding: 4px;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    box-shadow: 3px 3px 3px lightgray;
+}
+#botao-salvar commandButton:hover{
+    background: white;
+}
+</style>
+    
+    <div id="tabelaInteira">
     <h:body>
+        <h1>Agendamento de Serviço</h1>
         <h:form id="form1">
             <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
                         width: 300px; font-size:small; padding-left: auto;" closable="true" >
                 <p:autoUpdate/>
             </p:messages>
 
-            <p:panel id="cadastroCarro" header="Agendamento">
-                <p:panelGrid columns="2" layout="grid">
-                    <p:panelGrid columns="1" layout="grid">
 
-                        <p:outputLabel value="Cliente"/>
-                        <p:selectOneMenu id="cliente" value="#{agendaBean.cliente}"
+
+                        <p:outputLabel value="Cliente" style="display: block; margin: 20px auto 0 145px;"/>
+                        <p:selectOneMenu id="cliente" value="#{agendaBean.cliente}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
                                          filter="true" filterMatchMode="contains"
                                          converter="#{clienteConverter}">
 
@@ -32,9 +56,9 @@
                         </p:selectOneMenu>
 
 
-                        <p:outputLabel value="Carro"/>
+                        <p:outputLabel value="Carro" style="display: block; margin: 20px auto 0 145px;"/>
 
-                        <p:selectOneMenu id="carro" value="#{agendaBean.carro}" disabled ="#{agendaBean.buscarCarro() eq null}"
+                        <p:selectOneMenu id="carro" value="#{agendaBean.carro}" disabled ="#{agendaBean.buscarCarro() eq null}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
                                          filter="true" filterMatchMode="contains"
                                          converter="#{carroConverter}">
 
@@ -45,19 +69,20 @@
                             <p:ajax />
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="Data"/>
-                        <p:datePicker id="basic" value="#{agendaBean.agendaData}"
+                        <p:outputLabel value="Data" style="display: block; margin: 20px auto 0 145px;"/>
+                        <p:datePicker id="basic" value="#{agendaBean.agendaData}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
                                       model="#{datePickerMetadataView.model}"/>
 
-                        <p:outputLabel value="Descrição"/>
-                        <p:inputText id="descricao" value="#{agendaBean.agendaDesc}"/>
+                        <p:outputLabel value="Descrição" style="display: block; margin: 20px auto 0 145px;"/>
+                        <p:inputText id="descricao" value="#{agendaBean.agendaDesc}" style="display: block; width: 200px; margin: 15px auto 0 auto"/>
 
-                        <p:commandButton value="Gravar" icon="pi pi-save" iconPos="right" actionListener="#{agendaBean.salvar()}" ajax="false" />
-                        <p:commandButton style="margin-right: 30px;"  icon="pi pi-angle-left" iconPos="right" id="voltar" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" />
-                    </p:panelGrid>
-                </p:panelGrid>
-            </p:panel>
+                        <div style="text-align: center">
+                            <p:commandButton id="voltar" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" style="margin: 30px 20px 0 auto; width: 200px; height: 40px; font-size: 1rem;" />
+                            <p:commandButton value="Gravar" actionListener="#{agendaBean.salvar()}" ajax="false" style="width: 200px; height: 40px; font-size: 1rem; background: rgb(13, 255, 0); border: none"/>
+                        
+                        </div>
         </h:form>
     </h:body>
 
+        </div>
 </html>

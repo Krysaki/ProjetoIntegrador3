@@ -5,21 +5,44 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head>
-        <title>Cadastro de carro</title>
+   <h:head>
+       <title>Cadastro de Carros</title>
     </h:head>
+    
+    <style>
+            h1{
+    padding-top: 20px;
+    text-align: center;
+    }
+    #tabelaInteira {
+    width:500px;
+    height: 700px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin: 10px 5px;
+    padding: 4px;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    box-shadow: 3px 3px 3px lightgray;
+}
+#botao-salvar commandButton:hover{
+    background: white;
+}
+</style>
+
+    <div id="tabelaInteira">
     <h:body>
-        <h:outputText value=" Cadastro Carro"/>
+        <h1>Cadastro Carro</h1>
         <h:form id="form1">
             <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
                         width: 300px; font-size:small; padding-left: auto;" closable="true" >
                 <p:autoUpdate/>
             </p:messages>
-            <p:panel id="cadastroCarro" header="Informações">
-                <p:panelGrid columns="2" layout="grid">
-                    <p:panelGrid columns="1" layout="grid">
-                        <p:outputLabel value="Cliente *"/>
-                        <p:selectOneMenu id="cliente" value="#{carroBean.cliente}"
+            
+            <p:outputLabel value="Cliente *" style="display: block; margin: 20px auto 0 145px;"/>
+                        <p:selectOneMenu id="cliente" value="#{carroBean.cliente}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
                                          filter="true" filterMatchMode="contains"
                                          converter="#{clienteConverter}">
 
@@ -30,13 +53,13 @@
                             <p:ajax update="modelo" />
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="Placa do Carro"/>
-                        <p:inputText id="placa" value="#{carroBean.placa}" maxlength="7"/>
-                        <p:outputLabel value="Ano de fabricação"/>
-                        <p:inputText id="anoFabric" value="#{carroBean.anoFabric}" maxlength="4"/>
+                        <p:outputLabel value="Placa do Carro" style="display: block; margin: 20px auto 0 145px;"/>
+                        <p:inputText id="placa" value="#{carroBean.placa}" maxlength="7" style="display: block; width: 200px; margin: 15px auto 0 auto;"/>
+                        <p:outputLabel value="Ano de fabricação" style="display: block; margin: 20px auto 0 145px;"/>
+                        <p:inputText id="anoFabric" value="#{carroBean.anoFabric}" maxlength="4" style="display: block; width: 200px; margin: 15px auto 0 auto;"/>
 
-                        <p:outputLabel value="Marca *"/>
-                        <p:selectOneMenu id="marca" value="#{carroBean.marca}"
+                        <p:outputLabel value="Marca *" style="display: block; margin: 20px auto 0 145px;"/>
+                        <p:selectOneMenu id="marca" value="#{carroBean.marca}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
                                          filter="true" filterMatchMode="contains"
                                          converter="#{marcaConverter}">
 
@@ -47,8 +70,8 @@
                             <p:ajax update="modelo" />
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="Modelo *"/>
-                        <p:selectOneMenu id="modelo" value="#{carroBean.modelo}"
+                        <p:outputLabel value="Modelo *" style="display: block; margin: 20px auto 0 145px;"/>
+                        <p:selectOneMenu id="modelo" value="#{carroBean.modelo}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
                                          filter="true" filterMatchMode="contains"
                                          converter="#{modeloConverter}" disabled="#{carroBean.buscarModelos() eq null }">
 
@@ -57,14 +80,15 @@
                                            itemLabel="#{modelo.itemLabel()}"
                                            itemValue="#{modelo}"/>
                         </p:selectOneMenu>
-
-                        <p:commandButton value="Gravar" icon="pi pi-save" iconPos="right" actionListener="#{carroBean.salvar()}" ajax="false" />
-                        <p:commandButton id="voltar" icon="pi pi-angle-left" iconPos="right" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" />
-                    </p:panelGrid>
-                </p:panelGrid>
-
-            </p:panel>
+                        
+                        <div style="text-align: center">
+                        <p:commandButton id="voltar" value="VOLTAR" action="#{carroBean.doVoltar}" ajax="false" style="margin: 30px 20px 0 auto; width: 200px; height: 40px; font-size: 1rem;"
+                                         />
+                        <p:commandButton value="GRAVAR" actionListener="#{carroBean.salvar()}" ajax="false" style="width: 200px; height: 40px; font-size: 1rem; background: rgb(13, 255, 0); border: none"/>
+                        </div>
+                 
         </h:form>
     </h:body>
+        </div>
 
 </html>

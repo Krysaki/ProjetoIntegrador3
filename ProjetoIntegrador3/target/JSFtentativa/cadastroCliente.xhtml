@@ -5,33 +5,54 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <title>Cadastro de cliente</title>
     </h:head>
-    <h:body>
-        <h:outputText value=" Cadastro Cliente"/>
-        <h:form id="form1">
-            <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
-                        width: 300px; font-size:small; padding-left: auto;" closable="true" >
-                <p:autoUpdate/>
-            </p:messages>
-            <p:panel id="cadastroCliente" header="Informações">
-                <p:panelGrid columns="2" layout="grid">
-                    <p:panelGrid columns="1" layout="grid">
-                        <p:outputLabel value="Cliente Nome"/>
-                        <p:inputText id="nome" value="#{clienteBean.nome}"/>
-                        <p:outputLabel value="CPF"/>
-                        <p:inputText id="cpf" value="#{clienteBean.cpf}" maxlength="14"/>
-                        <p:outputLabel value="Telefone"/>
-                        <p:inputText id="telefone" value="#{clienteBean.telefone}" maxlength="11" />
-                        <p:outputLabel value="E-mail"/>
-                        <p:inputText id="email" value="#{clienteBean.email}"/>
-                        <p:commandButton value="Salvar" icon="pi pi-check" iconPos="right" actionListener="#{clienteBean.salvar()}" process="@this" ajax="false" />
-                        <p:commandButton style="margin-right: 30px;"  icon="pi pi-angle-left" iconPos="right" id="voltar" value="Voltar" action="#{clienteBean.doVoltar}" ajax="false"></p:commandButton>
-                    </p:panelGrid>
-                </p:panelGrid>
+    
+    <style>
+            h1{
+    padding-top: 20px;
+    text-align: center;
+    }
+    #tabelaInteira {
+    width:500px;
+    height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin: 10px 5px;
+    padding: 4px;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    box-shadow: 3px 3px 3px lightgray;
+}
+#botao-salvar commandButton:hover{
+    background: white;
+}
+</style>
+    <div id="tabelaInteira">   
+        <h:body>
+ 
+            <h:form id="form1">
+                <h1>Cadastro de Cliente</h1>
+                <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
+                            width: 300px; font-size:small; padding-left: auto;" closable="true" >
+                    <p:autoUpdate/>
+                </p:messages>
 
-            </p:panel>
-        </h:form>
-    </h:body>
+                <p:outputLabel value="Cliente Nome" style="display: block; margin:0 0 0 150px; font-size: 20px"/>
+                            <p:inputText id="nome" value="#{clienteBean.nome}" style="margin: 20px 0 20px 150px; height: 30px; width: 200px; border:solid 1px black; border-radius: 8px"/>
+                            <p:outputLabel value="CPF" style="display: block; margin-left: 150px; font-size: 20px"/>
+                            <p:inputText id="cpf" value="#{clienteBean.cpf}" maxlength="14" style="margin: 20px 0 20px 150px; height: 30px; width: 200px; border:solid 1px black; border-radius: 8px"/>
+                            <p:outputLabel value="Telefone" style="display: block; margin-left: 150px; font-size: 20px"/>
+                            <p:inputText id="telefone" value="#{clienteBean.telefone}" maxlength="11" style="margin: 20px 0 20px 150px; height: 30px; width: 200px; border:solid 1px black; border-radius: 8px"/>
+                            <p:outputLabel value="E-mail" style="display: block; margin-left: 150px; font-size: 20px"/>
+                            <p:inputText id="email" value="#{clienteBean.email}" style="display: block; margin: 20px 0px 40px 150px; height: 30px; width: 200px; border:solid 1px black; border-radius: 8px" />
+                            
+                            <p:commandButton style="margin-right: 30px; margin-left:30px; width: 200px; height: 50px; background: rgb(33, 150, 243); border: none; color: white; border-radius: 5px; font-size: 20px"  id="voltar" value="VOLTAR" action="#{clienteBean.doVoltar}" ajax="false"></p:commandButton>
+                            <p:commandButton style="margin-right: 30px; width: 200px; border: none; color: white; font-size: 20px; border-radius: 5px; background: rgb(13, 255, 0); height: 50px;" id="botao-salvar" value="SALVAR" actionListener="#{clienteBean.salvar()}" process="@this" ajax="false" />
+                            
 
+            </h:form>
+         </h:body>
+</div>
 </html>
