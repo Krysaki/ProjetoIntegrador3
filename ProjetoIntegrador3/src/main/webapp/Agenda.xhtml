@@ -13,6 +13,7 @@
             h1{
     padding-top: 20px;
     text-align: center;
+    font-family: sans-serif;
     }
     #tabelaInteira {
     width:500px;
@@ -27,8 +28,14 @@
     background-color: white;
     box-shadow: 3px 3px 3px lightgray;
 }
-#botao-salvar commandButton:hover{
-    background: white;
+.botao-salvar:hover{
+    background: rgb(126,214,48) !important;
+    transition: 0.2s !important;
+}
+.botao-voltar:hover{
+    border: none;
+    background: rgb(39,194,239) !important;
+    transition: 0.2s !important;
 }
 </style>
     
@@ -43,8 +50,8 @@
 
 
 
-                        <p:outputLabel value="Cliente" style="display: block; margin: 20px auto 0 145px;"/>
-                        <p:selectOneMenu id="cliente" value="#{agendaBean.cliente}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
+                        <p:outputLabel value="Cliente" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                        <p:selectOneMenu id="cliente" value="#{agendaBean.cliente}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
                                          filter="true" filterMatchMode="contains"
                                          converter="#{clienteConverter}">
 
@@ -56,9 +63,9 @@
                         </p:selectOneMenu>
 
 
-                        <p:outputLabel value="Carro" style="display: block; margin: 20px auto 0 145px;"/>
+                        <p:outputLabel value="Carro" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
 
-                        <p:selectOneMenu id="carro" value="#{agendaBean.carro}" disabled ="#{agendaBean.buscarCarro() eq null}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
+                        <p:selectOneMenu id="carro" value="#{agendaBean.carro}" disabled ="#{agendaBean.buscarCarro() eq null}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
                                          filter="true" filterMatchMode="contains"
                                          converter="#{carroConverter}">
 
@@ -69,16 +76,16 @@
                             <p:ajax />
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="Data" style="display: block; margin: 20px auto 0 145px;"/>
-                        <p:datePicker id="basic" value="#{agendaBean.agendaData}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
+                        <p:outputLabel value="Data" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                        <p:datePicker id="basic" value="#{agendaBean.agendaData}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
                                       model="#{datePickerMetadataView.model}"/>
 
-                        <p:outputLabel value="Descrição" style="display: block; margin: 20px auto 0 145px;"/>
-                        <p:inputText id="descricao" value="#{agendaBean.agendaDesc}" style="display: block; width: 200px; margin: 15px auto 0 auto"/>
+                        <p:outputLabel value="Descrição" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                        <p:inputText id="descricao" value="#{agendaBean.agendaDesc}" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
 
                         <div style="text-align: center">
-                            <p:commandButton id="voltar" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" style="margin: 30px 20px 0 auto; width: 200px; height: 40px; font-size: 1rem;" />
-                            <p:commandButton value="Gravar" actionListener="#{agendaBean.salvar()}" ajax="false" style="width: 200px; height: 40px; font-size: 1rem; background: rgb(13, 255, 0); border: none"/>
+                            <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" style="margin: 50px 20px 0 auto; width: 215px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
+                            <p:commandButton value="Gravar" actionListener="#{agendaBean.salvar()}" styleClass="botao-salvar" icon="pi pi-save" iconPos="right" ajax="false" style="font-family: sans-serif; width: 215px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
                         
                         </div>
         </h:form>

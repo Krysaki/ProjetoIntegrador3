@@ -10,26 +10,28 @@
     
     <style>
         BODY {
-            background-image: url(https://i0.wp.com/www.tempario.com.br/wp-content/uploads/2019/06/ferramentas-para-oficina-mecânica-1-2.jpg?fit=1254%2C837); 
+            background-image: linear-gradient(to right, transparent 0%, #fff 95%), url(https://onmotor.com.br/wp-content/uploads/2022/04/2022-05-25-problemas-de-uma-oficina-mecanica.jpg);
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: 50% 180%;
         }
         BODY img {
             opacity: 0.7;
         }
         
     h1{
-    padding-top: 20px;
+    padding-top: 5px;
     text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 40px;
 }
     #tabelaInteira {
     width:500px;
-    height: 440px;
+    height: 400px;
     border: 1px solid #ccc;
     border-radius: 12px;
     margin: 10px 5px;
     padding: 4px;
-    margin-top: 100px;
+    margin-top: 240px;
     margin-right: auto;
     margin-left: auto;
     background-color: white;
@@ -43,20 +45,12 @@
             <center>
            
            <h1>Selecione a Montadora</h1>
- 
-            <br></br>     
-            <br></br>
-            <p:commandButton style="margin-right: 30px; width: 200px; height: 50px;" id="cadastroCliente" value="CADASTRAR CLIENTE" process="@this" action="#{indexBean.doIrCliente()}" ajax="false"></p:commandButton>
+      
+            <p:commandButton style="display: block; margin: 20px auto 0 20px; width: 450px; height: 50px; font-family: sans-serif;" id="cadastroCliente" value="CADASTRAR CLIENTE" process="@this" action="#{indexBean.doIrCliente()}" ajax="false"></p:commandButton>
             
-            <br></br>
-            <br></br>
-            <br></br>
-            <p:commandButton style="margin-right: 30px; width: 200px; height: 50px;" id="cadastroCarro" value="CADASTRAR CARRO"  process="@this" action="#{indexBean.doIrCarro()}" ajax="false"></p:commandButton>
+            <p:commandButton style="display: block; margin: 40px auto 0 20px; width: 450px; height: 50px; font-family: sans-serif;" id="cadastroCarro" value="CADASTRAR CARRO"  process="@this" action="#{indexBean.doIrCarro()}" ajax="false"></p:commandButton>
             
-            <br></br> 
-            <br></br>
-            <br></br>
-            <p:commandButton style="margin-right: 30px; width: 200px; height: 50px;" id="cadastroAgenda" value="AGENDAMENTO" process="@this" action="#{indexBean.doIrAgenda()}" ajax="false"></p:commandButton>
+            <p:commandButton style="display: block; margin: 40px  0 20px; width: 450px; height: 50px; font-family: sans-serif;" id="cadastroAgenda" value="AGENDAMENTO" process="@this" action="#{indexBean.doIrAgenda()}" ajax="false"></p:commandButton>
                   
             </center>
         </h:form>
