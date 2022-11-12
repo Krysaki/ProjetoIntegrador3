@@ -5,20 +5,14 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import mapeamento.Agenda;
 import mapeamento.Carro;
 import mapeamento.Cliente;
-import org.hibernate.type.LocalDateTimeType;
-import org.primefaces.model.datepicker.DateMetadataModel;
-import org.primefaces.model.datepicker.DefaultDateMetadataModel;
 import service.CarroService;
 import service.ClienteService;
-import service.MarcaService;
-import service.ModeloService;
 import service.AgendaService;
 
 /**
@@ -35,10 +29,6 @@ public class AgendaBean implements Serializable {
     @EJB
     private CarroService carroService;
     @EJB
-    private ModeloService modeloService;
-    @EJB
-    private MarcaService marcaService;
-    @EJB
     private ClienteService clienteService;
 
     private int agendaCod;
@@ -48,14 +38,6 @@ public class AgendaBean implements Serializable {
     private String agendaCarplaca;
     private Cliente cliente;
     private Carro carro;
-    private DateMetadataModel model;
-
-    @PostConstruct
-    private void init() {
-        Agenda agenda = new Agenda();
-        LocalDateTimeType agendaData = new LocalDateTimeType();
-        model = new DefaultDateMetadataModel();
-    }
 
     public String doVoltar() {
         return "Index.xhtml";
@@ -68,6 +50,9 @@ public class AgendaBean implements Serializable {
         agenda.setAgendaData(Date.from(agendaData.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         agenda.setAgendaCliid(this.cliente);
         agenda.setAgendaCarplaca(this.carro);
+        agenda.setAgendaMarca(this.carro.getCarModcod().getModMarccod().getMarcMarca());
+        agenda.setAgendaModelo(this.carro.getCarModcod().getModModelo());
+        agenda.setAgendaCliente(this.cliente.getCliNome());
 
         agendaService.salvar(agenda);
     }

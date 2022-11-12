@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -96,10 +94,10 @@ public class Carro implements Serializable {
         this.carModcod = carModcod;
     }
 
-    public String getItemLabel(){
-    return this.carModcod.getModModelo();
+    public String getItemLabel() {
+        return this.carModcod.getModModelo();
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;

@@ -18,7 +18,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>cadastroCarro.xhtml</welcome-file>
+        <welcome-file>pesquisaServico.xhtml</welcome-file>
     </welcome-file-list>
 
 </web-app>

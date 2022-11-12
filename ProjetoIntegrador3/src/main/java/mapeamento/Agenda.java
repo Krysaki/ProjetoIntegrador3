@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mapeamento;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,8 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -30,14 +24,8 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "AGENDA")
-@NamedQueries({
-    @NamedQuery(name = "Agenda.findAll", query = "SELECT a FROM Agenda a"),
-    @NamedQuery(name = "Agenda.findByAgendaCod", query = "SELECT a FROM Agenda a WHERE a.agendaCod = :agendaCod"),
-    @NamedQuery(name = "Agenda.findByAgendaDesc", query = "SELECT a FROM Agenda a WHERE a.agendaDesc = :agendaDesc"),
-    @NamedQuery(name = "Agenda.findByAgendaData", query = "SELECT a FROM Agenda a WHERE a.agendaData = :agendaData")})
 public class Agenda implements Serializable {
 
- 
     private static final long serialVersionUID = 1L;
     @Id
     //@Basic(optional = false)
@@ -59,6 +47,15 @@ public class Agenda implements Serializable {
     @JoinColumn(name = "AGENDA_CLIID", referencedColumnName = "CLI_ID")
     @ManyToOne(optional = false)
     private Cliente agendaCliid;
+    @Size(max = 500)
+    @Column(name = "AGENDA_MARCA")
+    private String agendaMarca;
+    @Size(max = 500)
+    @Column(name = "AGENDA_MODELO")
+    private String agendaModelo;
+    @Size(max = 500)
+    @Column(name = "AGENDA_CLIENTE")
+    private String agendaCliente;
 
     public Agenda() {
     }
@@ -92,6 +89,11 @@ public class Agenda implements Serializable {
         return agendaData;
     }
 
+    public String getAgendaDataFormatada() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        return formatter.format(agendaData);
+    }
+
     public void setAgendaData(Date agendaData) {
         this.agendaData = agendaData;
     }
@@ -110,6 +112,30 @@ public class Agenda implements Serializable {
 
     public void setAgendaCliid(Cliente agendaCliid) {
         this.agendaCliid = agendaCliid;
+    }
+
+    public String getAgendaMarca() {
+        return agendaMarca;
+    }
+
+    public void setAgendaMarca(String agendaMarca) {
+        this.agendaMarca = agendaMarca;
+    }
+
+    public String getAgendaModelo() {
+        return agendaModelo;
+    }
+
+    public void setAgendaModelo(String agendaModelo) {
+        this.agendaModelo = agendaModelo;
+    }
+
+    public String getAgendaCliente() {
+        return agendaCliente;
+    }
+
+    public void setAgendaCliente(String agendaCliente) {
+        this.agendaCliente = agendaCliente;
     }
 
     @Override
@@ -136,5 +162,5 @@ public class Agenda implements Serializable {
     public String toString() {
         return "mapeamento.Agenda[ agendaCod=" + agendaCod + " ]";
     }
-    
+
 }
