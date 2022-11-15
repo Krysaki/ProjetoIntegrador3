@@ -29,6 +29,8 @@
         #botao-salvar commandButton:hover{
             background: white;
         }
+        
+        
     </style>
     <div id="tabelaInteira">
         <h:body>
@@ -38,8 +40,8 @@
                 <p:autoUpdate/>
             </p:messages>
             <h:form id="form1">
-                <p:outputLabel value="Cliente *" style="display: block; margin: 20px auto 0 145px;"/>
-                <p:selectOneMenu id="cliente" value="#{pesquisaBean.cliente}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
+                <p:outputLabel value="Cliente *" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:selectOneMenu id="cliente" value="#{pesquisaBean.cliente}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
                                  filter="true" filterMatchMode="contains"
                                  converter="#{clienteConverter}">
 
@@ -50,8 +52,8 @@
                     <p:ajax update="modelo" />
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Marca *" style="display: block; margin: 20px auto 0 145px;"/>
-                <p:selectOneMenu id="marca" value="#{pesquisaBean.marca}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
+                <p:outputLabel value="Marca *" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:selectOneMenu id="marca" value="#{pesquisaBean.marca}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
                                  filter="true" filterMatchMode="contains"
                                  converter="#{marcaConverter}">
 
@@ -62,8 +64,8 @@
                     <p:ajax update="modelo" />
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Modelo *" style="display: block; margin: 20px auto 0 145px;"/>
-                <p:selectOneMenu id="modelo" value="#{pesquisaBean.modelo}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
+                <p:outputLabel value="Modelo *" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:selectOneMenu id="modelo" value="#{pesquisaBean.modelo}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
                                  filter="true" filterMatchMode="contains"
                                  converter="#{modeloConverter}" disabled="#{pesquisaBean.buscarModelos() eq null }">
 
@@ -73,17 +75,24 @@
                                    itemValue="#{modelo}"/>
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Data inicial" style="display: block; margin: 20px auto 0 145px;"/>
-                <p:datePicker id="datIni" value="#{pesquisaBean.dataIni}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
+                <p:outputLabel value="Data inicial" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:datePicker id="datIni" value="#{pesquisaBean.dataIni}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
                               model="#{datePickerMetadataView.model}"/>
 
-                <p:outputLabel value="Data final" style="display: block; margin: 20px auto 0 145px;"/>
-                <p:datePicker id="datFim" value="#{pesquisaBean.dataFim}" style="display: block; width: 200px; margin: 15px auto 0 auto;"
+                <p:outputLabel value="Data final" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:datePicker id="datFim" value="#{pesquisaBean.dataFim}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
                               model="#{datePickerMetadataView.model}"/>
 
-                <p:commandButton style="margin-right: 30px; margin-left:30px; width: 200px; height: 50px; background: rgb(33, 150, 243); border: none; color: white; border-radius: 5px; font-size: 20px"  id="voltar" value="VOLTAR" action="#{pesquisaBean.doVoltar}" ajax="false"></p:commandButton>
-                <p:commandButton value="Pesquisar" id="pesquisa" actionListener="#{pesquisaBean.retornoPesquisa()}" process="@this" update="form2" ajax="false"/>
+                <div>
+                    <center>
+                 <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{pesquisaBean.doVoltar}" ajax="false"
+                                     style="margin: 50px 20px 0 auto; width: 215px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
+                <p:commandButton value="Pesquisar" id="pesquisa" icon=" pi pi-search" iconPos="right" actionListener="#{pesquisaBean.retornoPesquisa()}" process="@this" update="form2" ajax="false" 
+                                     style="font-family: sans-serif; width: 215px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
+                    </center>
+                </div>
             </h:form>
+            
 
             <center>
                 <br />

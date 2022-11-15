@@ -23,5 +23,9 @@ public class IndexBean implements Serializable {
     public String doIrAgenda() {
         return "Agenda.xhtml";
     }
+    
+    public String doIrPesquisa() {
+        return "pesquisaServico.xhtml";
+    }
 
 }

@@ -8,6 +8,7 @@ mapeamento\Modelo.class
 service\ModeloService.class
 mapeamento\Marca.class
 Converters\ClienteConverter.class
+beans\PesquisaBean.class
 beans\CarroBean.class
 beans\ClienteBean.class
 mapeamento\Cliente.class
