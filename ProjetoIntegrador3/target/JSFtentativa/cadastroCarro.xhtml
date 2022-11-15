@@ -4,102 +4,103 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
 
-   <h:head>
-       <title>Cadastro de Carros</title>
+
+    <h:head>
+        <title>Cadastro de Carros</title>
     </h:head>
-    
+
 
     <style>
-    h1{
-    padding-top: 5px;
-    text-align: center;
-    font-family: sans-serif;
-    }
-    
-    #tabelaInteira {
-    width:500px;
-    height: 685px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    margin: 10px 5px;
-    padding: 4px;
-    margin-top: 100px;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: white;
-    box-shadow: 3px 3px 3px lightgray;
-}
-.botao-salvar:hover{
-    background: rgb(126,214,48) !important;
-    transition: 0.2s !important;
-}
-.botao-voltar:hover{
-    border: none;
-    background: rgb(39,194,239) !important;
-    transition: 0.2s !important;
-}
-</style>
+        h1{
+            padding-top: 5px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        #tabelaInteira {
+            width:500px;
+            height: 685px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            margin: 10px 5px;
+            padding: 4px;
+            margin-top: 100px;
+            margin-right: auto;
+            margin-left: auto;
+            background-color: white;
+            box-shadow: 3px 3px 3px lightgray;
+        }
+        .botao-salvar:hover{
+            background: rgb(126,214,48) !important;
+            transition: 0.2s !important;
+        }
+        .botao-voltar:hover{
+            border: none;
+            background: rgb(39,194,239) !important;
+            transition: 0.2s !important;
+        }
+    </style>
 
     <div id="tabelaInteira">
-    <h:body>
-        <h1>Cadastro Carro</h1>
-        <h:form id="form1">
-            <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
-                        width: 300px; font-size:small; padding-left: auto;" closable="true" >
-                <p:autoUpdate/>
-            </p:messages>
-            
-            <p:outputLabel value="Cliente *" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                        <p:selectOneMenu id="cliente" value="#{carroBean.cliente}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
-                                         filter="true" filterMatchMode="contains"
-                                         converter="#{clienteConverter}">
+        <h:body>
+            <h1>Cadastro Carro</h1>
+            <h:form id="form1">
+                <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
+                            width: 300px; font-size:small; padding-left: auto;" closable="true" >
+                    <p:autoUpdate/>
+                </p:messages>
 
-                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
-                            <f:selectItems value="#{carroBean.buscarClientes()}" var="cliente"
-                                           itemLabel="#{cliente.itemLabel}"
-                                           itemValue="#{cliente}" />
-                            <p:ajax update="modelo" />
-                        </p:selectOneMenu>
+                <p:outputLabel value="Cliente *" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:selectOneMenu id="cliente" value="#{carroBean.cliente}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
+                                 filter="true" filterMatchMode="contains"
+                                 converter="#{clienteConverter}">
 
-                        <p:outputLabel value="Placa do Carro" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                        <p:inputText id="placa" value="#{carroBean.placa}" maxlength="7" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
-                        
-                        <p:outputLabel value="Ano de fabricação" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                        <p:inputText id="anoFabric" value="#{carroBean.anoFabric}" maxlength="4" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
+                    <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
+                    <f:selectItems value="#{carroBean.buscarClientes()}" var="cliente"
+                                   itemLabel="#{cliente.itemLabel}"
+                                   itemValue="#{cliente}" />
+                    <p:ajax update="modelo" />
+                </p:selectOneMenu>
 
-                        <p:outputLabel value="Marca *" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                        <p:selectOneMenu id="marca" value="#{carroBean.marca}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
-                                         filter="true" filterMatchMode="contains"
-                                         converter="#{marcaConverter}">
+                <p:outputLabel value="Placa do Carro" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:inputText id="placa" value="#{carroBean.placa}" maxlength="7" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
 
-                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true"/>
-                            <f:selectItems value="#{carroBean.buscarMarcas()}" var="marca"
-                                           itemLabel="#{marca.itemLabel()}"
-                                           itemValue="#{marca}" />
-                            <p:ajax update="modelo" />
-                        </p:selectOneMenu>
+                <p:outputLabel value="Ano de fabricação" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:inputText id="anoFabric" value="#{carroBean.anoFabric}" maxlength="4" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
 
-                        <p:outputLabel value="Modelo *" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                        <p:selectOneMenu id="modelo" value="#{carroBean.modelo}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
-                                         filter="true" filterMatchMode="contains"
-                                         converter="#{modeloConverter}" disabled="#{carroBean.buscarModelos() eq null }">
+                <p:outputLabel value="Marca *" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:selectOneMenu id="marca" value="#{carroBean.marca}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
+                                 filter="true" filterMatchMode="contains"
+                                 converter="#{marcaConverter}">
 
-                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true"/>
-                            <f:selectItems value="#{carroBean.buscarModelos()}" var="modelo"
-                                           itemLabel="#{modelo.itemLabel()}"
-                                           itemValue="#{modelo}"/>
-                        </p:selectOneMenu>
-                        
-                        <div style="text-align: center">
-                            <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" style="margin: 50px 20px 0 auto; width: 215px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228); icon: 'pi pi-replay'"
-                                         />
-                            <p:commandButton value="Gravar" styleClass="botao-salvar" actionListener="#{carroBean.salvar()}" icon="pi pi-save" iconPos="right" ajax="false" style="font-family: sans-serif; width: 215px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
-                        </div>
-                 
-        </h:form>
-    </h:body>
-        </div>
+                    <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true"/>
+                    <f:selectItems value="#{carroBean.buscarMarcas()}" var="marca"
+                                   itemLabel="#{marca.itemLabel()}"
+                                   itemValue="#{marca}" />
+                    <p:ajax update="modelo" />
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Modelo *" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:selectOneMenu id="modelo" value="#{carroBean.modelo}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
+                                 filter="true" filterMatchMode="contains"
+                                 converter="#{modeloConverter}" disabled="#{carroBean.buscarModelos() eq null }">
+
+                    <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true"/>
+                    <f:selectItems value="#{carroBean.buscarModelos()}" var="modelo"
+                                   itemLabel="#{modelo.itemLabel()}"
+                                   itemValue="#{modelo}"/>
+                </p:selectOneMenu>
+
+                <div style="text-align: center">
+                    <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{carroBean.doVoltar}" ajax="false"
+                                     style="margin: 50px 20px 0 auto; width: 215px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
+                    <p:commandButton value="Gravar" styleClass="botao-salvar" actionListener="#{carroBean.salvar()}" icon="pi pi-save" iconPos="right" ajax="false"
+                                     style="font-family: sans-serif; width: 215px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
+                </div>
+
+            </h:form>
+        </h:body>
+    </div>
 
 </html>

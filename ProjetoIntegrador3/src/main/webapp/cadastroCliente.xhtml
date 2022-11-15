@@ -2,44 +2,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <title>Cadastro de Clientes</title> 
+        <title>Cadastro de Clientes</title>
     </h:head>
-    
+
     <style>
-            h1{
-    padding-top: 20px;
-    text-align: center;
-    font-family: sans-serif;
-    }
-    #tabelaInteira {
-    width:500px;
-    height: 600px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    margin: 10px 5px;
-    padding: 4px;
-    margin-top: 100px;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: white;
-    box-shadow: 3px 3px 3px lightgray;
-}
-.botao-salvar:hover{
-    background: rgb(126,214,48) !important;
-    transition: 0.2s !important;
-}
-.botao-voltar:hover{
-    border: none;
-    background: rgb(39,194,239) !important;
-    transition: 0.2s !important;
-}
-</style>
-    <div id="tabelaInteira">   
+        h1{
+            padding-top: 20px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        #tabelaInteira {
+            width:500px;
+            height: 600px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            margin: 10px 5px;
+            padding: 4px;
+            margin-top: 100px;
+            margin-right: auto;
+            margin-left: auto;
+            background-color: white;
+            box-shadow: 3px 3px 3px lightgray;
+        }
+        .botao-salvar:hover{
+            background: rgb(126,214,48) !important;
+            transition: 0.2s !important;
+        }
+        .botao-voltar:hover{
+            border: none;
+            background: rgb(39,194,239) !important;
+            transition: 0.2s !important;
+        }
+    </style>
+    <div id="tabelaInteira">
         <h:body>
- 
+
             <h:form id="form1">
                 <h1>Cadastro de Cliente</h1>
                 <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
@@ -48,21 +49,24 @@
                 </p:messages>
 
                 <p:outputLabel value="Nome" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                            <p:inputText id="nome" value="#{clienteBean.nome}" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
-                            <p:outputLabel value="CPF" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                            <p:inputText id="cpf" value="#{clienteBean.cpf}" maxlength="14" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
-                            <p:outputLabel value="Telefone" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                            <p:inputText id="telefone" value="#{clienteBean.telefone}" maxlength="11" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
-                            <p:outputLabel value="E-mail" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                            <p:inputText id="email" value="#{clienteBean.email}" style="display: block; width: 450px; margin: 15px auto 0 auto;" />
-                            
-                            <div style="text-align: center">
-                                <p:commandButton id="voltar" styleClass="botao-voltar" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" icon="pi pi-replay" iconPos="right" style="margin: 50px 20px 0 auto; width: 215px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228);"
-                                         />
-                                <p:commandButton value="Gravar" styleClass="botao-salvar" icon="pi pi-save" iconPos="right" actionListener="#{carroBean.salvar()}" ajax="false" style="font-family: sans-serif; width: 215px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
-                            </div>
+                <p:inputText id="nome" value="#{clienteBean.nome}" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
+                <p:outputLabel value="CPF" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:inputText id="cpf" value="#{clienteBean.cpf}" maxlength="14" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
+                <p:outputLabel value="Telefone" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:inputText id="telefone" value="#{clienteBean.telefone}" maxlength="11" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
+                <p:outputLabel value="E-mail" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:inputText id="email" value="#{clienteBean.email}" style="display: block; width: 450px; margin: 15px auto 0 auto;" />
+
+                <div style="text-align: center">
+                    <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{clienteBean.doVoltar}" ajax="false"
+                                     style="margin: 50px 20px 0 auto; width: 215px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
+                    <p:commandButton value="Gravar" styleClass="botao-salvar" actionListener="#{clienteBean.salvar()}" icon="pi pi-save" iconPos="right" ajax="false"
+                                     style="font-family: sans-serif; width: 215px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
+                    <p:commandButton value="Limpar" styleClass="botao-salvar" actionListener="#{clienteBean.limpar()}" update="@form1" icon="pi pi-save" iconPos="right" ajax="false"
+                                     style="font-family: sans-serif; width: 215px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
+                </div>
 
             </h:form>
-         </h:body>
-</div>
+        </h:body>
+    </div>
 </html>

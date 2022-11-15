@@ -8,6 +8,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import mapeamento.Cliente;
+import org.primefaces.PrimeFaces;
 import service.ClienteService;
 
 /**
@@ -28,11 +29,25 @@ public class ClienteBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        Cliente cliente = new Cliente();
     }
 
     public String doVoltar() {
         return "Index.xhtml";
+    }
+
+    public String doCadastroCarro() {
+        return "cadastroCarro.xhtml";
+    }
+
+    public String doCadastroServico() {
+        return "cadastroServico.xhtml";
+    }
+
+    public void limpar() {
+        nome = "";
+        email = "";
+        cpf = "";
+        telefone = 0;
     }
 
     public void salvar() {
@@ -62,8 +77,17 @@ public class ClienteBean implements Serializable {
         cliente.setCliCpf(this.cpf);
         cliente.setCliNome(this.nome);
         cliente.setCliTelefone(this.telefone);
-
+        cliente.setCliId(0);
         clienteService.salvar(cliente);
+
+    }
+
+    public static void showDlg(String widgetVarDlg) {
+        primeFacesExecute("PF('" + widgetVarDlg + "').show();");
+    }
+
+    public static void primeFacesExecute(String summary) {
+        PrimeFaces.current().executeScript(summary);
     }
 
     public String getNome() {
