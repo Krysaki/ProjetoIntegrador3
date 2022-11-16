@@ -7,6 +7,7 @@
 
 
     <h:head>
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"/>
         <title>Cadastro de Carros</title>
     </h:head>
 
@@ -92,11 +93,13 @@
                                    itemValue="#{modelo}"/>
                 </p:selectOneMenu>
 
-                <div style="text-align: center">
+                <div>
                     <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{carroBean.doVoltar}" ajax="false"
-                                     style="margin: 50px 20px 0 auto; width: 215px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
+                                     style="margin: 50px 20px 0 20px; width: 180px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
                     <p:commandButton value="Gravar" styleClass="botao-salvar" actionListener="#{carroBean.salvar()}" icon="pi pi-save" iconPos="right" ajax="false"
-                                     style="font-family: sans-serif; width: 215px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
+                                     style="font-family: sans-serif; width: 180px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
+                    <p:commandButton styleClass="botao-limpar" actionListener="#{clienteBean.limpar()}" update="@form1" icon="fa fa-eraser" ajax="false"
+                                     style=" margin-left: 20px; font-family: sans-serif; width: 50px; height: 45px; font-size: 22px; background: rgb(255, 195, 47); border: none"/>
                 </div>
 
             </h:form>
