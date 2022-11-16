@@ -29,10 +29,21 @@
             background-color: white;
             box-shadow: 3px 3px 3px lightgray;
         }
-        #botao-salvar commandButton:hover{
-            background: white;
+        
+        .botao-salvar:hover{
+            background: rgb(126,214,48) !important;
+            transition: 0.2s !important;
+        }
+        .botao-voltar:hover{
+            border: none;
+            background: rgb(39,194,239) !important;
+            transition: 0.2s !important;
         }
         
+        .botao-limpar:hover{
+            background: rgb(253,222,49) !important;
+            transition: 0.2s !important;
+        }
         
     </style>
     <div id="tabelaInteira">
@@ -89,7 +100,7 @@
                 <div>
                  <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{pesquisaBean.doVoltar}" ajax="false"
                                      style="margin: 50px 20px 0 20px; width: 180px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
-                <p:commandButton value="Pesquisar" id="pesquisa" icon=" pi pi-search" iconPos="right" actionListener="#{pesquisaBean.retornoPesquisa()}" process="@this" update="form2" ajax="false" 
+                <p:commandButton value="Pesquisar" styleClass="botao-salvar" id="pesquisa" icon=" pi pi-search" iconPos="right" actionListener="#{pesquisaBean.retornoPesquisa()}" process="@this" update="form2" ajax="false" 
                                      style="font-family: sans-serif; width: 180px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
                 
                 <p:commandButton styleClass="botao-limpar" actionListener="#{clienteBean.limpar()}" update="@form1" icon="fa fa-eraser" ajax="false"
