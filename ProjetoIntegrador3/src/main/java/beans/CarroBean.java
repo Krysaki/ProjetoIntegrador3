@@ -52,6 +52,14 @@ public class CarroBean implements Serializable {
         return "Index.xhtml";
     }
 
+    public void limpar() {
+        cliente = null;
+        marca = null;
+        modelo = null;
+        placa = "";
+        anoFabric = 0;
+    }
+
     public void salvar() {
         //Metodos de validação para salvar
 
@@ -82,23 +90,32 @@ public class CarroBean implements Serializable {
         carro.setCarModcod(this.modelo);
 
         carroService.salvar(carro);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "info", "Cadastro efetuado com sucesso."));
+
     }
 
     public List<Marca> buscarMarcas() {
         String sqlQuery = "SELECT * FROM MARCA m ";
-        return marcaService.executeNativeQuery(sqlQuery, Marca.class);
+
+        return marcaService.executeNativeQuery(sqlQuery, Marca.class
+        );
     }
 
     public List<Cliente> buscarClientes() {
         String sqlQuery = "SELECT * FROM ClIENTE C ";
-        return clienteService.executeNativeQuery(sqlQuery, Cliente.class);
+
+        return clienteService.executeNativeQuery(sqlQuery, Cliente.class
+        );
     }
 
     public List<Modelo> buscarModelos() {
         String sqlQuery;
         if (this.marca != null) {
             sqlQuery = "SELECT * FROM MODELO mo WHERE MOD_MARCCOD = ".concat(String.valueOf(this.marca.getMarcCod().toString()));
-            return modeloService.executeNativeQuery(sqlQuery, Modelo.class);
+
+            return modeloService.executeNativeQuery(sqlQuery, Modelo.class
+            );
         }
         return null;
     }

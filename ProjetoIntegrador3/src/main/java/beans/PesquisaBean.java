@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import mapeamento.Agenda;
-import mapeamento.Carro;
 import mapeamento.Cliente;
 import mapeamento.Marca;
 import mapeamento.Modelo;

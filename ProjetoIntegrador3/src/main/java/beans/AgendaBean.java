@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import mapeamento.Agenda;
@@ -33,7 +35,7 @@ public class AgendaBean implements Serializable {
 
     private int agendaCod;
     private String agendaDesc;
-    private LocalDate agendaData;
+    private java.util.Date agendaData;
     private int agendaCliid;
     private String agendaCarplaca;
     private Cliente cliente;
@@ -43,11 +45,21 @@ public class AgendaBean implements Serializable {
         return "Index.xhtml";
     }
 
+    public void limpar() {
+        agendaCod = 0;
+        agendaDesc = "";
+        agendaData = new java.util.Date();
+        agendaCliid = 0;
+        agendaCarplaca = "";
+        cliente = null;
+        carro = null;
+    }
+
     public void salvar() {
         Agenda agenda = new Agenda();
         agenda.setAgendaCod(this.agendaCod);
         agenda.setAgendaDesc(this.agendaDesc);
-        agenda.setAgendaData(Date.from(agendaData.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        agenda.setAgendaData(agendaData);
         agenda.setAgendaCliid(this.cliente);
         agenda.setAgendaCarplaca(this.carro);
         agenda.setAgendaMarca(this.carro.getCarModcod().getModMarccod().getMarcMarca());
@@ -55,6 +67,9 @@ public class AgendaBean implements Serializable {
         agenda.setAgendaCliente(this.cliente.getCliNome());
 
         agendaService.salvar(agenda);
+
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "info", "Agendamento efetuado com sucesso."));
     }
 
     public List<Cliente> buscarCliente() {
@@ -86,11 +101,11 @@ public class AgendaBean implements Serializable {
         this.agendaDesc = agendaDesc;
     }
 
-    public LocalDate getAgendaData() {
+    public java.util.Date getAgendaData() {
         return agendaData;
     }
 
-    public void setAgendaData(LocalDate agendaData) {
+    public void setAgendaData(java.util.Date agendaData) {
         this.agendaData = agendaData;
     }
 
@@ -124,6 +139,11 @@ public class AgendaBean implements Serializable {
 
     public void setCarro(Carro carro) {
         this.carro = carro;
+    }
+
+    @Override
+    public String toString() {
+        return "AgendaBean{" + "carro=" + carro + '}';
     }
 
 }

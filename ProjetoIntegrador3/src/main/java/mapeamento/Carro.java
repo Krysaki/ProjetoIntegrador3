@@ -95,7 +95,7 @@ public class Carro implements Serializable {
     }
 
     public String getItemLabel() {
-        return this.carModcod.getModModelo();
+        return "Modelo " + this.carModcod.getModModelo() + " - Placa " + this.carPlaca;
     }
 
     @Override

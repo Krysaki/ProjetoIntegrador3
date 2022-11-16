@@ -3,6 +3,7 @@ package beans;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.annotation.FacesConfig;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -50,7 +51,7 @@ public class ClienteBean implements Serializable {
         telefone = 0;
     }
 
-    public void salvar() {
+    public void salvar() throws InterruptedException {
         Cliente cliente = new Cliente();
 
         if (this.nome.isEmpty() || this.nome.isBlank()) {
@@ -79,15 +80,9 @@ public class ClienteBean implements Serializable {
         cliente.setCliTelefone(this.telefone);
         cliente.setCliId(0);
         clienteService.salvar(cliente);
-
-    }
-
-    public static void showDlg(String widgetVarDlg) {
-        primeFacesExecute("PF('" + widgetVarDlg + "').show();");
-    }
-
-    public static void primeFacesExecute(String summary) {
-        PrimeFaces.current().executeScript(summary);
+        limpar();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "info", "Cadastro efetuado com sucesso."));
     }
 
     public String getNome() {
