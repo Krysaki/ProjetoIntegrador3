@@ -7,16 +7,18 @@
 
     <h:head>
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"/>
+         <title>Pesquisa</title>
     </h:head>
 
     <style>
         h1{
-            padding-top: 20px;
+            padding-top: 5px;
             text-align: center;
+            font-family: sans-serif;
         }
         #tabelaInteira {
             width:500px;
-            height:600px;
+            height:670px;
             border: 1px solid #ccc;
             border-radius: 12px;
             margin: 10px 5px;
@@ -35,7 +37,7 @@
     </style>
     <div id="tabelaInteira">
         <h:body>
-
+             <h1>Pesquisa de serviço</h1>
             <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
                         width: 300px; font-size:small; padding-left: auto;" closable="true" >
                 <p:autoUpdate/>
@@ -85,7 +87,6 @@
                               model="#{datePickerMetadataView.model}"/>
 
                 <div>
-                    <center>
                  <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{pesquisaBean.doVoltar}" ajax="false"
                                      style="margin: 50px 20px 0 20px; width: 180px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
                 <p:commandButton value="Pesquisar" id="pesquisa" icon=" pi pi-search" iconPos="right" actionListener="#{pesquisaBean.retornoPesquisa()}" process="@this" update="form2" ajax="false" 
@@ -93,13 +94,11 @@
                 
                 <p:commandButton styleClass="botao-limpar" actionListener="#{clienteBean.limpar()}" update="@form1" icon="fa fa-eraser" ajax="false"
                                      style=" margin-left: 20px; font-family: sans-serif; width: 50px; height: 45px; font-size: 22px; background: rgb(255, 195, 47); border: none"/>
-                    </center>
                 </div>
             </h:form>
             
 
             <center>
-                <br />
                 <br />
                 <br />
                 <h:form id="form2">

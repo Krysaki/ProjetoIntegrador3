@@ -12,13 +12,14 @@
     
     <style>
             h1{
-    padding-top: 20px;
-    text-align: center;
-    font-family: sans-serif;
-    }
+            padding-top: 5px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        
     #tabelaInteira {
     width:500px;
-    height: 600px;
+    height: 585px;
     border: 1px solid #ccc;
     border-radius: 12px;
     margin: 10px 5px;
@@ -84,7 +85,7 @@
                         <p:outputLabel value="Descrição" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
                         <p:inputText id="descricao" value="#{agendaBean.agendaDesc}" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
 
-                        <div style="text-align: center">
+                        <div>
                             <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" 
                                              style="margin: 50px 20px 0 20px; width: 180px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
                             
