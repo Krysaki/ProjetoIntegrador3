@@ -7,7 +7,7 @@
 
     <h:head>
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"/>
-         <title>Pesquisa</title>
+        <title>Pesquisa</title>
     </h:head>
 
     <style>
@@ -29,7 +29,7 @@
             background-color: white;
             box-shadow: 3px 3px 3px lightgray;
         }
-        
+
         .botao-salvar:hover{
             background: rgb(126,214,48) !important;
             transition: 0.2s !important;
@@ -39,16 +39,16 @@
             background: rgb(39,194,239) !important;
             transition: 0.2s !important;
         }
-        
+
         .botao-limpar:hover{
             background: rgb(253,222,49) !important;
             transition: 0.2s !important;
         }
-        
+
     </style>
     <div id="tabelaInteira">
         <h:body>
-             <h1>Pesquisa de serviço</h1>
+            <h1>Pesquisa de serviço</h1>
             <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
                         width: 300px; font-size:small; padding-left: auto;" closable="true" >
                 <p:autoUpdate/>
@@ -98,41 +98,17 @@
                               model="#{datePickerMetadataView.model}"/>
 
                 <div>
-                 <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{pesquisaBean.doVoltar}" ajax="false"
+                    <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar"
+                                     action="#{pesquisaBean.doVoltar}" ajax="false"
                                      style="margin: 50px 20px 0 20px; width: 180px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
-                <p:commandButton value="Pesquisar" styleClass="botao-salvar" id="pesquisa" icon=" pi pi-search" iconPos="right" actionListener="#{pesquisaBean.retornoPesquisa()}" process="@this" update="form2" ajax="false" 
+                    <p:commandButton value="Pesquisar" styleClass="botao-salvar" id="pesquisa" icon=" pi pi-search" iconPos="right"
+                                     action="#{pesquisaBean.dlgAgendamentos()}"  update="@form1" ajax="false"
                                      style="font-family: sans-serif; width: 180px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
-                
-                <p:commandButton styleClass="botao-limpar" actionListener="#{clienteBean.limpar()}" update="@form1" icon="fa fa-eraser" ajax="false"
+                    <p:commandButton styleClass="botao-limpar" actionListener="#{pesquisaBean.limparPesquisa()}"
+                                     update="@form1" icon="fa fa-eraser" ajax="false"
                                      style=" margin-left: 20px; font-family: sans-serif; width: 50px; height: 45px; font-size: 22px; background: rgb(255, 195, 47); border: none"/>
                 </div>
             </h:form>
-            
-
-            <center>
-                <br />
-                <br />
-                <h:form id="form2">
-                    <p:dataTable id="agendaTable" var="agenda" value="#{pesquisaBean.agendaList}" rowKey="#{agenda.agendaCod}" >
-
-                        <p:column headerText="Data">
-                            <h:outputText value="#{agenda.agendaDataFormatada}" />
-                        </p:column>
-                        <p:column headerText="Cliente">
-                            <h:outputText value="#{agenda.agendaCliente}" />
-                        </p:column>
-                        <p:column headerText="Placa">
-                            <h:outputText value="#{agenda.agendaCarplaca.carPlaca}" />
-                        </p:column>
-                        <p:column headerText="Marca">
-                            <h:outputText value="#{agenda.agendaMarca}" />
-                        </p:column>
-                        <p:column headerText="Modelo">
-                            <h:outputText value="#{agenda.agendaModelo}" />
-                        </p:column>
-                    </p:dataTable>
-                </h:form>
-            </center>
         </h:body>
     </div>
 </html>

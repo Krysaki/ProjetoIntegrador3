@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Agendamentos</title>
+        <style type="text/css">
+            .ui-widget {
+                font-size: 90%;
+            }
+        </style>
+    </h:head>
+
+    <h:body >
+        <h:form id="form">
+            <p:dataTable id="idAgenda" var="agenda" value="#{dlgPesquisaServicoBean.listAgenda}">
+                <p:column headerText="Data">
+                    <h:outputText value="#{agenda.agendaDataFormatada}" />
+                </p:column>
+                <p:column headerText="Cliente">
+                    <h:outputText value="#{agenda.agendaCliente}" />
+                </p:column>
+                <p:column headerText="Placa">
+                    <h:outputText value="#{agenda.agendaCarplaca.carPlaca}" />
+                </p:column>
+                <p:column headerText="Marca">
+                    <h:outputText value="#{agenda.agendaMarca}" />
+                </p:column>
+                <p:column headerText="Modelo">
+                    <h:outputText value="#{agenda.agendaModelo}" />
+                </p:column>
+                <p:column headerText="Descrição">
+                    <h:outputText value="#{agenda.agendaDesc}" />
+                </p:column>
+                <p:column headerText="Ação">
+                    <p:commandButton value="Excluir" actionListener="#{dlgPesquisaServicoBean.excluir(agenda)}"
+                                     process="@this" update="form:idAgenda" ajax="false"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>

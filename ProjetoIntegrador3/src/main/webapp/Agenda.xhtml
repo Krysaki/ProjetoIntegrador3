@@ -9,94 +9,94 @@
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"/>
         <title>Agendamento de servico</title>
     </h:head>
-    
+
     <style>
-            h1{
+        h1{
             padding-top: 5px;
             text-align: center;
             font-family: sans-serif;
         }
-        
-    #tabelaInteira {
-    width:500px;
-    height: 585px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    margin: 10px 5px;
-    padding: 4px;
-    margin-top: 100px;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: white;
-    box-shadow: 3px 3px 3px lightgray;
-}
-.botao-salvar:hover{
-    background: rgb(126,214,48) !important;
-    transition: 0.2s !important;
-}
-.botao-voltar:hover{
-    border: none;
-    background: rgb(39,194,239) !important;
-    transition: 0.2s !important;
-}
-</style>
-    
+
+        #tabelaInteira {
+            width:500px;
+            height: 585px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            margin: 10px 5px;
+            padding: 4px;
+            margin-top: 100px;
+            margin-right: auto;
+            margin-left: auto;
+            background-color: white;
+            box-shadow: 3px 3px 3px lightgray;
+        }
+        .botao-salvar:hover{
+            background: rgb(126,214,48) !important;
+            transition: 0.2s !important;
+        }
+        .botao-voltar:hover{
+            border: none;
+            background: rgb(39,194,239) !important;
+            transition: 0.2s !important;
+        }
+    </style>
+
     <div id="tabelaInteira">
-    <h:body>
-        <h1>Agendamento de Serviço</h1>
-        <h:form id="form1">
-            <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
-                        width: 300px; font-size:small; padding-left: auto;" closable="true" >
-                <p:autoUpdate/>
-            </p:messages>
+        <h:body>
+            <h1>Agendamento de Serviço</h1>
+            <h:form id="form1">
+                <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
+                            width: 300px; font-size:small; padding-left: auto;" closable="true" >
+                    <p:autoUpdate/>
+                </p:messages>
 
 
 
-                        <p:outputLabel value="Cliente" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                        <p:selectOneMenu id="cliente" value="#{agendaBean.cliente}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
-                                         filter="true" filterMatchMode="contains"
-                                         converter="#{clienteConverter}">
+                <p:outputLabel value="Cliente" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:selectOneMenu id="cliente" value="#{agendaBean.cliente}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
+                                 filter="true" filterMatchMode="contains"
+                                 converter="#{clienteConverter}">
 
-                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
-                            <f:selectItems value="#{agendaBean.buscarCliente()}" var="cliente"
-                                           itemLabel="#{cliente.itemLabel}"
-                                           itemValue="#{cliente}" />
-                            <p:ajax update = "carro" />
-                        </p:selectOneMenu>
+                    <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
+                    <f:selectItems value="#{agendaBean.buscarCliente()}" var="cliente"
+                                   itemLabel="#{cliente.itemLabel}"
+                                   itemValue="#{cliente}" />
+                    <p:ajax update = "carro" />
+                </p:selectOneMenu>
 
 
-                        <p:outputLabel value="Carro" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:outputLabel value="Carro" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
 
-                        <p:selectOneMenu id="carro" value="#{agendaBean.carro}" disabled ="#{agendaBean.buscarCarro() eq null}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
-                                         filter="true" filterMatchMode="contains"
-                                         converter="#{carroConverter}">
+                <p:selectOneMenu id="carro" value="#{agendaBean.carro}" disabled ="#{agendaBean.buscarCarro() eq null}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
+                                 filter="true" filterMatchMode="contains"
+                                 converter="#{carroConverter}">
 
-                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
-                            <f:selectItems value="#{agendaBean.buscarCarro()}" var="carro"
-                                           itemLabel="#{carro.itemLabel}"
-                                           itemValue="#{carro}" />
-                            <p:ajax />
-                        </p:selectOneMenu>
+                    <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
+                    <f:selectItems value="#{agendaBean.buscarCarro()}" var="carro"
+                                   itemLabel="#{carro.itemLabel}"
+                                   itemValue="#{carro}" />
+                    <p:ajax />
+                </p:selectOneMenu>
 
-                        <p:outputLabel value="Data" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                        <p:datePicker id="basic" value="#{agendaBean.agendaData}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
-                                      model="#{datePickerMetadataView.model}"/>
+                <p:outputLabel value="Data" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:datePicker id="basic" value="#{agendaBean.agendaData}" style="display: block; width: 450px; margin: 15px auto 0 auto;"
+                              model="#{datePickerMetadataView.model}"/>
 
-                        <p:outputLabel value="Descrição" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
-                        <p:inputText id="descricao" value="#{agendaBean.agendaDesc}" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
+                <p:outputLabel value="Descrição" style="display: block; margin: 20px auto 0 20px; font-family: sans-serif; font-size: 18px;"/>
+                <p:inputText id="descricao" value="#{agendaBean.agendaDesc}" style="display: block; width: 450px; margin: 15px auto 0 auto;"/>
 
-                        <div>
-                            <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" 
-                                             style="margin: 50px 20px 0 20px; width: 180px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
-                            
-                            <p:commandButton value="Gravar" actionListener="#{agendaBean.salvar()}" styleClass="botao-salvar" icon="pi pi-save" iconPos="right" ajax="false" 
-                                             style="font-family: sans-serif; width: 180px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
-                            
-                         <p:commandButton styleClass="botao-limpar" actionListener="#{clienteBean.limpar()}" update="@form1" icon="fa fa-eraser" ajax="false"
+                <div>
+                    <p:commandButton id="voltar" styleClass="botao-voltar" icon="pi pi-replay" iconPos="right" value="Voltar" action="#{carroBean.doVoltar}" ajax="false"
+                                     style="margin: 50px 20px 0 20px; width: 180px; height: 45px; font-size: 22px; font-family: sans-serif; background: rgb(50, 121, 228)" />
+
+                    <p:commandButton value="Gravar" actionListener="#{agendaBean.salvar()}" styleClass="botao-salvar" icon="pi pi-save" iconPos="right" ajax="false"
+                                     style="font-family: sans-serif; width: 180px; height: 45px; font-size: 22px; background: rgb(110, 180, 82); border: none"/>
+
+                    <p:commandButton styleClass="botao-limpar" actionListener="#{agendaBean.limpar()}" update="@form1" icon="fa fa-eraser" ajax="false"
                                      style=" margin-left: 20px; font-family: sans-serif; width: 50px; height: 45px; font-size: 22px; background: rgb(255, 195, 47); border: none"/>
-                        </div>
-        </h:form>
-    </h:body>
+                </div>
+            </h:form>
+        </h:body>
 
-        </div>
+    </div>
 </html>

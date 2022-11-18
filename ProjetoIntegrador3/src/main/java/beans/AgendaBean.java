@@ -1,9 +1,6 @@
 package beans;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -67,6 +64,7 @@ public class AgendaBean implements Serializable {
         agenda.setAgendaCliente(this.cliente.getCliNome());
 
         agendaService.salvar(agenda);
+        limpar();
 
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "info", "Agendamento efetuado com sucesso."));

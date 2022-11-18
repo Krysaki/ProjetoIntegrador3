@@ -17,4 +17,6 @@ Converters\CarroConverter.class
 Converters\ModeloConverter.class
 beans\IndexBean.class
 beans\AgendaBean.class
+beans\GerBean.class
+beans\dlgPesquisaServicoBean.class
 mapeamento\Carro.class

@@ -90,6 +90,7 @@ public class CarroBean implements Serializable {
         carro.setCarModcod(this.modelo);
 
         carroService.salvar(carro);
+        limpar();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "info", "Cadastro efetuado com sucesso."));
 

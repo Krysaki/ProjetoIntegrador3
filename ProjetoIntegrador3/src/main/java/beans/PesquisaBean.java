@@ -3,16 +3,20 @@ package beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import mapeamento.Agenda;
 import mapeamento.Cliente;
 import mapeamento.Marca;
 import mapeamento.Modelo;
+import org.primefaces.PrimeFaces;
 import service.AgendaService;
 
 /**
@@ -22,6 +26,9 @@ import service.AgendaService;
 @Named
 @ViewScoped
 public class PesquisaBean implements Serializable {
+
+    @Inject
+    private GerBean gerBean;
 
     @EJB
     private AgendaService agendaService;
@@ -119,12 +126,34 @@ public class PesquisaBean implements Serializable {
         return null;
     }
 
-    public List<Agenda> getAgendaList() {
-        return agendaList;
-    }
-
     public String doVoltar() {
         return "Index.xhtml";
+    }
+
+    public void dlgAgendamentos() {
+        gerBean.setAgendaList(retornoPesquisa());
+        limparPesquisa();
+        Map<String, Object> options = new HashMap<>();
+        options.put("modal", true);
+        options.put("width", 1000);
+        options.put("height", 600);
+        options.put("contentWidth", "100%");
+        options.put("contentHeight", "100%");
+        options.put("headerElement", "customheader");
+
+        PrimeFaces.current().dialog().openDynamic("dlgPesquisaServico", options, null);
+    }
+
+    public void limparPesquisa() {
+        cliente = null;
+        marca = null;
+        modelo = null;
+        dataIni = null;
+        dataFim = null;
+    }
+
+    public List<Agenda> getAgendaList() {
+        return agendaList;
     }
 
     public void setAgendaList(List<Agenda> agendaList) {
